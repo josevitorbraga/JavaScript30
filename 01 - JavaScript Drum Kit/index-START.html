@@ -58,7 +58,27 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  document.addEventListener("keydown", (event)=>{
+    const pressedKey = event.keyCode
 
+    // audioFile returns a node list with the div in index 0 and the audio in index 1 
+    const audioFile = document.querySelectorAll(`[data-key="${pressedKey}"]`)
+
+    if(!audioFile){
+      console.log("Press only the specific keys")
+    } else {
+      audioFile[1].pause();
+      audioFile[1].currentTime = 0;
+      audioFile[1].play()
+      audioFile[0].classList.add("playing")
+
+      setTimeout(()=>{
+        audioFile[0].classList.remove("playing")
+
+      }, 200)
+    }
+
+  })
 </script>
 
 
