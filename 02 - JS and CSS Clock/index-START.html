@@ -62,12 +62,36 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: right;
     }
-
+    .hour-hand{
+      background-color: red;
+    }
+    .second-hand{
+      background-color: grey;
+      width: 30%;
+      right: 50%;
+    }
   </style>
 
   <script>
 
+    setInterval(()=>{
+      const date = new Date()
+
+      const seconds = Number(date.getSeconds())
+      const secondsHand = document.getElementsByClassName("second-hand")
+      secondsHand[0].style.transform = `rotate(${96+(seconds*6)}deg)`
+
+      const minutes = Number(date.getMinutes())
+      const minutesHand = document.getElementsByClassName("min-hand")
+      minutesHand[0].style.transform = `rotate(${96+(minutes*6)}deg)`
+
+      const hours = Number(date.getHours())
+      const hoursHand = document.getElementsByClassName("hour-hand")
+      hoursHand[0].style.transform = `rotate(${96+(hours*30)}deg)`
+
+    },1000)  
 
   </script>
 </body>
