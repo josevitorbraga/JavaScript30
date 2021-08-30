@@ -39,12 +39,34 @@
       margin-bottom: 50px;
     }
 
+
     input {
       width: 100px;
     }
   </style>
 
+
   <script>
+    const imgElement = document.getElementsByTagName("img")
+
+    const blurElement = document.getElementById("blur")
+    blurElement.addEventListener("input", ()=>{
+      imgElement[0].style.filter = `blur(${blurElement.value}px)`
+    })
+
+    const spacingElement = document.getElementById("spacing")
+    spacingElement.addEventListener("input", ()=>{
+      imgElement[0].style.padding = `${spacingElement.value}px`
+    })
+
+    const colorElement = document.getElementById("base")
+    document.getElementsByClassName("hl")[0].style.color = `${colorElement.value}`
+    colorElement.addEventListener("change",()=>{
+      imgElement[0].style.backgroundColor = `${colorElement.value}`
+      document.getElementsByClassName("hl")[0].style.color = `${colorElement.value}`
+
+    })
+
   </script>
 
 </body>
